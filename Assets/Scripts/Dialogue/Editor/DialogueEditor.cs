@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -25,6 +26,13 @@ namespace Dialogue.Editor
                 return true;
             }
             return false;
+        }
+
+        private void OnGUI()
+        {
+            EditorGUILayout.LabelField("Apple");
+            EditorGUILayout.LabelField("Orange");
+            EditorGUILayout.LabelField("Pear");
         }
     }
 }
