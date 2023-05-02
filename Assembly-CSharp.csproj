@@ -123,6 +123,8 @@
      <Compile Include="Assets/Scripts/Inventories/DropLibrary.cs" />
      <Compile Include="Assets/Scripts/Control/ClickablePickup.cs" />
      <Compile Include="Assets/Scripts/Attributes/HealthDisplay.cs" />
+     <Compile Include="Assets/Scripts/Dialogue/Dialogue.cs" />
+     <Compile Include="Assets/Scripts/Dialogue/DialogueNode.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Synty Asset Packs - Commercial licence required/PolygonVikings/Prefabs" />
      <Folder Include="Assets/Asset Packs/Universal Gold Icons Sample" />
@@ -239,6 +241,7 @@
      <Folder Include="Assets/Game/UI/In Game" />
      <Folder Include="Assets/Scripts/Stats" />
      <None Include="Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" />
+     <Folder Include="Assets/Scripts/Dialogue" />
      <Folder Include="Assets/Asset Packs/SimpleFX/Materials" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Environments - Misc other assets/Textures/Tiling Textures" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Synty Asset Packs - Commercial licence required/PolygonPirates/Prefabs" />
