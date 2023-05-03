@@ -8,6 +8,7 @@ namespace Dialogue.Editor
     {
         private Dialogue _selectedDialogue = null;
         private GUIStyle _nodeStyle;
+        private bool _dragging = false;
         
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -56,6 +57,7 @@ namespace Dialogue.Editor
             }
             else
             {
+                ProcessEvents();
                 foreach (DialogueNode node in _selectedDialogue.GetAllNodes())
                 {
                     OnGUINode(node);
@@ -63,9 +65,28 @@ namespace Dialogue.Editor
             }
         }
 
+        private void ProcessEvents()
+        {
+            if (Event.current.type == EventType.MouseDown && !_dragging)
+            {
+                _dragging = true;
+            }
+            else if (Event.current.type == EventType.MouseDrag && _dragging)
+            {
+                Undo.RecordObject(_selectedDialogue, "Move Dialogue Node");
+                _selectedDialogue.GetRootNode().rect.position = Event.current.mousePosition;
+                //Repaint();
+                GUI.changed = true;//это семантически точнее чем использовать Repaint()
+            }
+            else if (Event.current.type == EventType.MouseUp && _dragging)
+            {
+                _dragging = false;
+            }
+        }
+
         private void OnGUINode(DialogueNode node)
         {
-            GUILayout.BeginArea(node.position, _nodeStyle);
+            GUILayout.BeginArea(node.rect, _nodeStyle);
             
             EditorGUI.BeginChangeCheck();
 
