@@ -50,11 +50,17 @@ namespace Dialogue.Editor
             {
                 foreach (DialogueNode node in _selectedDialogue.GetAllNodes())
                 {
+                    EditorGUI.BeginChangeCheck();
+                    
+                    EditorGUILayout.LabelField("Node:");
                     string newText = EditorGUILayout.TextField(node.text);
-                    if (newText != node.text)
-                    {
+                    string newUniqueID = EditorGUILayout.TextField(node.uniqueID);
+                    if (EditorGUI.EndChangeCheck())
+                    { 
+                        Undo.RecordObject(_selectedDialogue, "Update Dialogue Text");
+                        
                         node.text = newText;
-                        EditorUtility.SetDirty(_selectedDialogue);
+                        node.uniqueID = newUniqueID;
                     }
                 }
             }
@@ -62,5 +68,4 @@ namespace Dialogue.Editor
     }
 } 
   
-
 
