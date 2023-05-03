@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2294783b0af964fb2996f01211d58ff5, type: 3}
   m_Name: New Dialogue 1
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - uniqueID: 
+    text: World
+    children: []

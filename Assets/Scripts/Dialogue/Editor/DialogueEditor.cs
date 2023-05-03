@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Callbacks;
-using UnityEngine;
-
 
 namespace Dialogue.Editor
 {
@@ -55,7 +50,12 @@ namespace Dialogue.Editor
             {
                 foreach (DialogueNode node in _selectedDialogue.GetAllNodes())
                 {
-                    EditorGUILayout.LabelField(node.text);
+                    string newText = EditorGUILayout.TextField(node.text);
+                    if (newText != node.text)
+                    {
+                        node.text = newText;
+                        EditorUtility.SetDirty(_selectedDialogue);
+                    }
                 }
             }
         }
