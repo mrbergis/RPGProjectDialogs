@@ -10,13 +10,15 @@ namespace Dialogue.Editor
 {
     public class DialogueEditor : EditorWindow
     {
+        private Dialogue _selectedDialogue = null;
+        
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
         {
             GetWindow(typeof(DialogueEditor), false, "Dialogue Editor");
         }
 
-        [OnOpenAssetAttribute(1)]
+        [OnOpenAsset(1)]
         public static bool OnOpenAsset(int instanceID, int line)
         {
             Dialogue dialogue = EditorUtility.InstanceIDToObject(instanceID) as Dialogue;
@@ -28,14 +30,34 @@ namespace Dialogue.Editor
             return false;
         }
 
+        private void OnEnable()
+        {
+            Selection.selectionChanged += OnSelectionChange;
+        }
+
+        private void OnSelectionChange()
+        {
+            Dialogue newDialogue =  Selection.activeObject as Dialogue;
+            if (newDialogue != null)
+            {
+                _selectedDialogue = newDialogue;
+                Repaint();
+            }
+        }
+
         private void OnGUI()
         {
-            EditorGUILayout.LabelField("Apple");
-            EditorGUILayout.LabelField("Orange");
-            EditorGUILayout.LabelField("Pear");
+            if (_selectedDialogue == null)
+            {
+                EditorGUILayout.LabelField("No Dialogue Selected.");
+            }
+            else
+            {
+                EditorGUILayout.LabelField(_selectedDialogue.name);
+            }
         }
     }
-}
-
+} 
+  
 
 
