@@ -53,7 +53,10 @@ namespace Dialogue.Editor
             }
             else
             {
-                EditorGUILayout.LabelField(_selectedDialogue.name);
+                foreach (DialogueNode node in _selectedDialogue.GetAllNodes())
+                {
+                    EditorGUILayout.LabelField(node.text);
+                }
             }
         }
     }
