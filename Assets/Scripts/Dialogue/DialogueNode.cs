@@ -8,6 +8,8 @@ namespace Dialogue
     public class DialogueNode : ScriptableObject
     {
         [SerializeField] 
+        private bool isPlayerSpeaking = false;
+        [SerializeField] 
         private string text;
         [SerializeField] 
         private List<string> children = new List<string>();
@@ -27,6 +29,11 @@ namespace Dialogue
         public List<string> GetChildren()
         {
             return children;
+        }
+        
+        public bool IsPlayerSpeaking()
+        {
+            return isPlayerSpeaking;
         }
 
 #if UNITY_EDITOR
@@ -57,6 +64,13 @@ namespace Dialogue
         {
             Undo.RecordObject(this, "Remove Dialogue Link");
             children.Remove(childID);
+            EditorUtility.SetDirty(this);
+        }
+
+        public void SetPlayerSpeaking(bool newIsPlayerSpeaking)
+        {
+            Undo.RecordObject(this, "Change Dialogue Speaker");
+            isPlayerSpeaking = newIsPlayerSpeaking;
             EditorUtility.SetDirty(this);
         }
 #endif
