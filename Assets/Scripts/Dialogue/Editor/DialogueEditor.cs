@@ -16,6 +16,8 @@ namespace Dialogue.Editor
         private Vector2 _draggingOffset;
         [NonSerialized]
         private DialogueNode _creatingNode = null;
+        [NonSerialized]
+        private DialogueNode _deletingNode = null;
         
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -80,6 +82,13 @@ namespace Dialogue.Editor
                     _selectedDialogue.CreateNode(_creatingNode);
                     _creatingNode = null;
                 }
+
+                if (_deletingNode != null)
+                { 
+                    Undo.RecordObject(_selectedDialogue, "Delete Dialogue Node");
+                    _selectedDialogue.DeleteNode(_deletingNode);
+                    _deletingNode = null;
+                }
             }
         }
 
@@ -117,11 +126,20 @@ namespace Dialogue.Editor
 
                 node.text = newText;
             }
+            
+            GUILayout.BeginHorizontal();
+            
+            if (GUILayout.Button("x"))
+            {
+                _deletingNode = node;
+            }
 
             if (GUILayout.Button("+"))
             {
                 _creatingNode = node;
             }
+            
+            GUILayout.EndHorizontal();
             
             GUILayout.EndArea();
         }
