@@ -26,6 +26,9 @@ namespace Dialogue.Editor
         private bool _draggingCanvas = false;
         [NonSerialized] 
         private Vector2 _draggingCanvasOffset;
+
+        private const float CANVAS_SIZE = 4000;
+        private const float BACKGROUND_SIZE = 50;
         
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -78,7 +81,10 @@ namespace Dialogue.Editor
 
                 _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
 
-                GUILayoutUtility.GetRect(4000, 4000);
+                Rect canvas = GUILayoutUtility.GetRect(CANVAS_SIZE, CANVAS_SIZE);
+                Texture2D backgroundTex = Resources.Load("background") as Texture2D;
+                Rect texCoords = new Rect(0, 0, CANVAS_SIZE / BACKGROUND_SIZE, CANVAS_SIZE / BACKGROUND_SIZE);
+                GUI.DrawTextureWithTexCoords(canvas, backgroundTex, texCoords);
                 
                 foreach (DialogueNode node in _selectedDialogue.GetAllNodes())
                 {
