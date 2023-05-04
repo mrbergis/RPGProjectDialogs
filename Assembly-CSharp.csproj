@@ -67,6 +67,7 @@
      <Compile Include="Assets/Scripts/Stats/IModifierProvider.cs" />
      <Compile Include="Assets/Scripts/SceneManagement/Fader.cs" />
      <Compile Include="Assets/Scripts/Saving/SaveableEntity.cs" />
+     <Compile Include="Assets/Scripts/Dialogue/Dialogue.cs" />
      <Compile Include="Assets/Scripts/Combat/Fighter.cs" />
      <Compile Include="Assets/Scripts/Inventories/StatsEquipment.cs" />
      <Compile Include="Assets/Scripts/Stats/ExperienceDisplay.cs" />
@@ -117,14 +118,13 @@
      <Compile Include="Assets/Scripts/Combat/Projectile.cs" />
      <Compile Include="Assets/Asset Packs/GameDev.tv Assets/Scripts/Utils/UI/Dragging/IDragSource.cs" />
      <Compile Include="Assets/Asset Packs/GameDev.tv Assets/Scripts/UI/Inventories/InventorySlotUI.cs" />
+     <Compile Include="Assets/Scripts/Dialogue/DialogueNode.cs" />
      <Compile Include="Assets/Asset Packs/Standard Assets/Environment/Water/Water/Scripts/Water.cs" />
      <Compile Include="Assets/Asset Packs/GameDev.tv Assets/Scripts/Utils/UI/Tooltips/TooltipSpawner.cs" />
      <Compile Include="Assets/Scripts/SceneManagement/Portal.cs" />
      <Compile Include="Assets/Scripts/Inventories/DropLibrary.cs" />
      <Compile Include="Assets/Scripts/Control/ClickablePickup.cs" />
      <Compile Include="Assets/Scripts/Attributes/HealthDisplay.cs" />
-     <Compile Include="Assets/Scripts/Dialogue/Dialogue.cs" />
-     <Compile Include="Assets/Scripts/Dialogue/DialogueNode.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Synty Asset Packs - Commercial licence required/PolygonVikings/Prefabs" />
      <Folder Include="Assets/Asset Packs/Universal Gold Icons Sample" />
@@ -192,6 +192,7 @@
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Environments - Misc other assets/Textures/StoneWork" />
      <Folder Include="Assets/Asset Packs/GameDev.tv Assets/Rod of Death/Materials and Model" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Synty Asset Packs - Commercial licence required/PolygonKnights/Prefabs/Props" />
+     <Folder Include="Assets/Game/Dialogue" />
      <Folder Include="Assets/Asset Packs/BOXOPHOBIC/Skybox Cubemap Extended/Meshes" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Environments - Misc other assets/Farm/Components" />
      <Folder Include="Assets/Asset Packs/Synty - Polygon Student Sample/Materials" />

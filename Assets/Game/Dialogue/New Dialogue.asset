@@ -18,45 +18,45 @@ MonoBehaviour:
     children:
     - b
     - c
-    position:
+    rect:
       serializedVersion: 2
-      x: 30
-      y: 30
-      width: 400
-      height: 100
+      x: 216
+      y: 161
+      width: 200
+      height: 250
   - uniqueID: b
     text: "Hello, your self \u0443\u0430\u0446\u0443\u0430"
     children: []
-    position:
+    rect:
       serializedVersion: 2
-      x: 30
-      y: 200
+      x: 666
+      y: 339
       width: 200
       height: 100
   - uniqueID: c
     text: Go away!
     children: []
-    position:
+    rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 122
+      y: 451
+      width: 200
+      height: 100
   - uniqueID: d
     text: 
     children: []
-    position:
+    rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 755
+      y: 120
+      width: 200
+      height: 100
   - uniqueID: 
     text: 
     children: []
-    position:
+    rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 204
+      y: 52
+      width: 200
+      height: 100
