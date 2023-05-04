@@ -18,6 +18,8 @@ namespace Dialogue.Editor
         private DialogueNode _creatingNode = null;
         [NonSerialized]
         private DialogueNode _deletingNode = null;
+        [NonSerialized]
+        private DialogueNode _linkingParentNode = null;
         
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -133,7 +135,9 @@ namespace Dialogue.Editor
             {
                 _deletingNode = node;
             }
-
+            
+            DrawLinkButtons(node);
+            
             if (GUILayout.Button("+"))
             {
                 _creatingNode = node;
@@ -142,6 +146,42 @@ namespace Dialogue.Editor
             GUILayout.EndHorizontal();
             
             GUILayout.EndArea();
+        }
+
+        private void DrawLinkButtons(DialogueNode node)
+        {
+            if (_linkingParentNode == null)
+            {
+                if (GUILayout.Button("link"))
+                {
+                    _linkingParentNode = node;
+                }
+            }
+            else if (_linkingParentNode == node)
+            {
+                if (GUILayout.Button("cancel"))
+                {
+                    _linkingParentNode = null;
+                }
+            }
+            else if (_linkingParentNode.children.Contains(node.uniqueID))
+            {
+                if (GUILayout.Button("unlink"))
+                {
+                    Undo.RecordObject(_selectedDialogue, "Remove Dialogue Link");
+                    _linkingParentNode.children.Remove(node.uniqueID);
+                    _linkingParentNode = null;
+                }
+            }
+            else
+            {
+                if (GUILayout.Button("child"))
+                {
+                    Undo.RecordObject(_selectedDialogue, "Add Dialogue Link");
+                    _linkingParentNode.children.Add(node.uniqueID);
+                    _linkingParentNode = null;
+                }
+            }
         }
 
         private void DrawConnections(DialogueNode node)
