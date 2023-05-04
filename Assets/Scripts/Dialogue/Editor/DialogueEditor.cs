@@ -8,9 +8,14 @@ namespace Dialogue.Editor
     public class DialogueEditor : EditorWindow
     {
         private Dialogue _selectedDialogue = null;
+        [NonSerialized]
         private GUIStyle _nodeStyle;
+        [NonSerialized]
         private DialogueNode _draggingNode = null;
+        [NonSerialized]
         private Vector2 _draggingOffset;
+        [NonSerialized]
+        private DialogueNode _creatingNode = null;
         
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -68,6 +73,13 @@ namespace Dialogue.Editor
                 {
                     DrawNode(node);
                 }
+
+                if (_creatingNode != null)
+                {
+                    Undo.RecordObject(_selectedDialogue, "Added Dialogue Node");
+                    _selectedDialogue.CreateNode(_creatingNode);
+                    _creatingNode = null;
+                }
             }
         }
 
@@ -97,21 +109,18 @@ namespace Dialogue.Editor
             GUILayout.BeginArea(node.rect, _nodeStyle);
             
             EditorGUI.BeginChangeCheck();
-
-            EditorGUILayout.LabelField("Node:", EditorStyles.whiteLabel);
+            
             string newText = EditorGUILayout.TextField(node.text);
-            string newUniqueID = EditorGUILayout.TextField(node.uniqueID);
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(_selectedDialogue, "Update Dialogue Text");
 
                 node.text = newText;
-                node.uniqueID = newUniqueID;
             }
 
-            foreach (DialogueNode childNode in _selectedDialogue.GetAllChildren(node))
+            if (GUILayout.Button("+"))
             {
-                EditorGUILayout.LabelField(childNode.text);
+                _creatingNode = node;
             }
             
             GUILayout.EndArea();
