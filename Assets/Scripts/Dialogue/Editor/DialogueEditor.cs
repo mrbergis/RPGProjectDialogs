@@ -22,6 +22,10 @@ namespace Dialogue.Editor
         private DialogueNode _linkingParentNode = null;
 
         private Vector2 _scrollPosition;
+        [NonSerialized] 
+        private bool _draggingCanvas = false;
+        [NonSerialized] 
+        private Vector2 _draggingCanvasOffset;
         
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -112,16 +116,32 @@ namespace Dialogue.Editor
                 {
                     _draggingOffset = _draggingNode.rect.position - Event.current.mousePosition;
                 }
+                else
+                {
+                    _draggingCanvas = true;
+                    _draggingCanvasOffset = Event.current.mousePosition + _scrollPosition;
+                }
             }
             else if (Event.current.type == EventType.MouseDrag && _draggingNode != null)
             {
                 Undo.RecordObject(_selectedDialogue, "Move Dialogue Node");
                 _draggingNode.rect.position = Event.current.mousePosition + _draggingOffset;
+                
                 GUI.changed = true;//это семантически точнее чем использовать Repaint()
+            }
+            else if (Event.current.type == EventType.MouseDrag && _draggingCanvas)
+            {
+                _scrollPosition = _draggingCanvasOffset - Event.current.mousePosition;
+                
+                GUI.changed = true;
             }
             else if (Event.current.type == EventType.MouseUp && _draggingNode != null)
             {
                 _draggingNode = null;
+            }
+            else if (Event.current.type == EventType.MouseUp && _draggingCanvas)
+            {
+                _draggingCanvas = false;
             }
         }
         private void DrawNode(DialogueNode node)
