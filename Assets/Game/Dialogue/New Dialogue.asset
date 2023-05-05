@@ -40,8 +40,8 @@ MonoBehaviour:
   - ff8b0e8f-cc65-4f7e-80b1-e5c37c4e29e2
   rect:
     serializedVersion: 2
-    x: 394
-    y: 198
+    x: 382
+    y: 185
     width: 200
     height: 100
 --- !u!114 &-724621751024635697
