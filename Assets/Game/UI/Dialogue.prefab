@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aIText: {fileID: 1304706693785639130}
+  nextButton: {fileID: 1739223947661619067}
 --- !u!1 &2113790673565120739
 GameObject:
   m_ObjectHideFlags: 0

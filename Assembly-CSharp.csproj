@@ -51,6 +51,7 @@
      <Compile Include="Assets/Scripts/Stats/Stats.cs" />
      <Compile Include="Assets/Scripts/Inventories/RandomDropper.cs" />
      <Compile Include="Assets/Scripts/Core/IAction.cs" />
+     <Compile Include="Assets/Scripts/UI/DialogueUI.cs" />
      <Compile Include="Assets/Scripts/Core/ActionScheduler.cs" />
      <Compile Include="Assets/Scripts/Cinematics/CinematicTrigger.cs" />
      <Compile Include="Assets/Asset Packs/GameDev.tv Assets/Scripts/UI/Inventories/InventoryDropTarget.cs" />
@@ -75,6 +76,7 @@
      <Compile Include="Assets/Asset Packs/Standard Assets/Environment/Water/Water/Scripts/WaterTile.cs" />
      <Compile Include="Assets/Scripts/Core/FollowCamera.cs" />
      <Compile Include="Assets/Asset Packs/GameDev.tv Assets/Scripts/UI/Inventories/IItemHolder.cs" />
+     <Compile Include="Assets/Scripts/Dialogue/PlayerConversant.cs" />
      <Compile Include="Assets/Scripts/Attributes/Health.cs" />
      <Compile Include="Assets/Scripts/Core/CameraFacing.cs" />
      <Compile Include="Assets/Asset Packs/Standard Assets/Environment/Water/Water/Scripts/SpecularLighting.cs" />
@@ -125,8 +127,6 @@
      <Compile Include="Assets/Scripts/Inventories/DropLibrary.cs" />
      <Compile Include="Assets/Scripts/Control/ClickablePickup.cs" />
      <Compile Include="Assets/Scripts/Attributes/HealthDisplay.cs" />
-     <Compile Include="Assets/Scripts/Dialogue/PlayerConversant.cs" />
-     <Compile Include="Assets/Scripts/UI/DialogueUI.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Synty Asset Packs - Commercial licence required/PolygonVikings/Prefabs" />
      <Folder Include="Assets/Asset Packs/Universal Gold Icons Sample" />
