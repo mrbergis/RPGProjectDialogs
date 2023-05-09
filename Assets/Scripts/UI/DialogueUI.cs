@@ -13,24 +13,22 @@ namespace UI
         [SerializeField] private GameObject AIResponse;
         [SerializeField] private Transform choiceRoot;
         [SerializeField] private GameObject choicePrefab;
+        [SerializeField] private Button quitButton;
         
         // Start is called before the first frame update
         void Start()
         {
             _playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
             _playerConversant.onConversationUpdated += UpdateUI;
-            nextButton.onClick.AddListener(Next);
+            nextButton.onClick.AddListener(() => _playerConversant.Next());
+            quitButton.onClick.AddListener(() => _playerConversant.Quit());
             
             UpdateUI();
         }
-
-        void Next()
-        {
-            _playerConversant.Next();
-        }
-
+        
         void UpdateUI()
         {
+            gameObject.SetActive(_playerConversant.IsActive());
             if (!_playerConversant.IsActive())
             {
                 return;

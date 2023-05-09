@@ -29,6 +29,14 @@ namespace Dialogue
             onConversationUpdated();
         }
 
+        public void Quit()
+        {
+            _currentDialogue = null;
+            _currentNode = null;
+            _isChoosing = false;
+            onConversationUpdated();
+        }
+
         public bool IsActive()
         {
             return _currentDialogue != null;
