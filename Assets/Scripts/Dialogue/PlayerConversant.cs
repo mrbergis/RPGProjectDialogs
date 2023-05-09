@@ -37,6 +37,13 @@ namespace Dialogue
             return currentDialogue.GetPlayerChildren(_currentNode);
         }
 
+        public void SelectChoice(DialogueNode choseNode)
+        {
+            _currentNode = choseNode;
+            _isChoosing = false;
+            Next();
+        }
+
         public void Next()
         {
             int numPlayerResponses =  currentDialogue.GetPlayerChildren(_currentNode).Count();
