@@ -10,6 +10,7 @@ namespace UI
         private PlayerConversant _playerConversant;
         [SerializeField] private TextMeshProUGUI aIText;
         [SerializeField]private Button nextButton;
+        [SerializeField] private GameObject AIResponse;
         [SerializeField] private Transform choiceRoot;
         [SerializeField] private GameObject choicePrefab;
         
@@ -29,19 +30,28 @@ namespace UI
         }
 
         void UpdateUI()
-        {
-            aIText.text = _playerConversant.GetText();
-            nextButton.gameObject.SetActive(_playerConversant.HasNext());
-            foreach (Transform item in choiceRoot)
-            {
-                Destroy(item.gameObject);
-            }
+        { 
+            AIResponse.SetActive(!_playerConversant.IsChoosing());
+            choiceRoot.gameObject.SetActive(_playerConversant.IsChoosing());
 
-            foreach (string choiceText in _playerConversant.GetChoices())
+            if (_playerConversant.IsChoosing())
             {
-                GameObject choiceInstance = Instantiate(choicePrefab,choiceRoot);
-                var textComp = choiceInstance.GetComponentInChildren<TextMeshProUGUI>();
-                textComp.text = choiceText;
+                foreach (Transform item in choiceRoot)
+                {
+                    Destroy(item.gameObject);
+                }
+
+                foreach (DialogueNode choice in _playerConversant.GetChoices())
+                {
+                    GameObject choiceInstance = Instantiate(choicePrefab,choiceRoot);
+                    var textComp = choiceInstance.GetComponentInChildren<TextMeshProUGUI>();
+                    textComp.text = choice.GetText();
+                }
+            }
+            else
+            {
+                aIText.text = _playerConversant.GetText();
+                nextButton.gameObject.SetActive(_playerConversant.HasNext());
             }
         }
     }
