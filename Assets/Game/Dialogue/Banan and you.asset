@@ -147,14 +147,14 @@ MonoBehaviour:
   m_Name: 218e9a65-edc7-4a9d-9f34-6341e3b4fba4
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: "\u0422\u044B \u043A\u0442\u043E \u0442\u0430\u043A\u043E\u0439, \u0441\u0442\u043E\u044F\u0442\u044C!"
+  text: oh.... my goode
   children:
   - 38533910-f19d-4dda-96bb-92e8f06bafc3
   - cba6fdff-9ec1-412f-86a6-6ec8c9c50c8b
   rect:
     serializedVersion: 2
-    x: 145
-    y: 44
+    x: 96
+    y: 57
     width: 200
     height: 100
 --- !u!114 &11400000
