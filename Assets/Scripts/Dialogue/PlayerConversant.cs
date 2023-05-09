@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,13 +9,29 @@ namespace Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
-        [SerializeField] private Dialogue currentDialogue;
+        [SerializeField] private Dialogue testDialogue;
+        private Dialogue _currentDialogue;
         private DialogueNode _currentNode = null;
         private bool _isChoosing = false;
 
-        private void Awake()
+        public event Action onConversationUpdated;
+
+        private IEnumerator Start()
         {
-            _currentNode = currentDialogue.GetRootNode();
+            yield return new WaitForSeconds(2);
+            StartDialogue(testDialogue);
+        }
+
+        public void StartDialogue(Dialogue newDialogue)
+        {
+            _currentDialogue = newDialogue;
+            _currentNode = _currentDialogue.GetRootNode();
+            onConversationUpdated();
+        }
+
+        public bool IsActive()
+        {
+            return _currentDialogue != null;
         }
 
         public bool IsChoosing()
@@ -24,7 +41,7 @@ namespace Dialogue
 
         public string GetText()
         {
-            if (currentDialogue == null)
+            if (_currentDialogue == null)
             {
                 return "";
             }
@@ -34,7 +51,7 @@ namespace Dialogue
 
         public IEnumerable<DialogueNode> GetChoices()
         {
-            return currentDialogue.GetPlayerChildren(_currentNode);
+            return _currentDialogue.GetPlayerChildren(_currentNode);
         }
 
         public void SelectChoice(DialogueNode choseNode)
@@ -46,21 +63,23 @@ namespace Dialogue
 
         public void Next()
         {
-            int numPlayerResponses =  currentDialogue.GetPlayerChildren(_currentNode).Count();
+            int numPlayerResponses =  _currentDialogue.GetPlayerChildren(_currentNode).Count();
             if (numPlayerResponses > 0)
             {
                 _isChoosing = true;
+                onConversationUpdated();
                 return;
             }
             
-            DialogueNode[] children = currentDialogue.GetAIChildren(_currentNode).ToArray();
+            DialogueNode[] children = _currentDialogue.GetAIChildren(_currentNode).ToArray();
             int randomIndex = Random.Range(0, children.Length);
             _currentNode = children[randomIndex];
+            onConversationUpdated();
         }
 
         public bool HasNext()
         {
-            return currentDialogue.GetAllChildren(_currentNode).Count() > 0;
+            return _currentDialogue.GetAllChildren(_currentNode).Count() > 0;
         }
     }
 }
