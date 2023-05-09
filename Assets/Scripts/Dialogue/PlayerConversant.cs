@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -23,6 +24,12 @@ namespace Dialogue
             }
 
             return _currentNode.GetText();
+        }
+
+        public IEnumerable<string> GetChoices()
+        {
+            yield return "I've lived here all my life!";
+            yield return "What What What!!!";
         }
 
         public void Next()
