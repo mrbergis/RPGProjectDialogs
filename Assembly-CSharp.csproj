@@ -327,6 +327,7 @@
      <Folder Include="Assets/Asset Packs/GameDev.tv Assets/Club" />
      <None Include="Assets/TextMesh Pro/Resources/Shaders/TMP_Bitmap-Mobile.shader" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Synty Asset Packs - Commercial licence required/PolygonVikings/Models/ImportedModels" />
+     <Folder Include="Assets/Game/UI/Dialogue" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Environments - Misc other assets/Textures" />
      <Folder Include="Assets/Asset Packs/Standard Assets/Environment/TerrainAssets" />
      <Folder Include="Assets/Asset Packs/SimpleSky/_Models" />
