@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a545e18e-0815-474a-8b9e-2bd2fa77712c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.RPG Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.RPG Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Characters/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Characters/Player/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Control/CursorType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Control/CursorType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dialogue/PlayerConversant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dialogue/PlayerConversant.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +80,7 @@
       <workItem from="1683400185853" duration="3674000" />
       <workItem from="1683461102748" duration="217000" />
       <workItem from="1683461426118" duration="13344000" />
+      <workItem from="1683715250392" duration="2476000" />
     </task>
     <servers />
   </component>

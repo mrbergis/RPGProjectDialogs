@@ -9,19 +9,12 @@ namespace Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
-        [SerializeField] private Dialogue testDialogue;
         private Dialogue _currentDialogue;
         private DialogueNode _currentNode = null;
         private bool _isChoosing = false;
 
         public event Action onConversationUpdated;
-
-        private IEnumerator Start()
-        {
-            yield return new WaitForSeconds(2);
-            StartDialogue(testDialogue);
-        }
-
+        
         public void StartDialogue(Dialogue newDialogue)
         {
             _currentDialogue = newDialogue;

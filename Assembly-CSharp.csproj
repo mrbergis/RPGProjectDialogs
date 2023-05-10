@@ -127,6 +127,7 @@
      <Compile Include="Assets/Scripts/Inventories/DropLibrary.cs" />
      <Compile Include="Assets/Scripts/Control/ClickablePickup.cs" />
      <Compile Include="Assets/Scripts/Attributes/HealthDisplay.cs" />
+     <Compile Include="Assets/Scripts/Dialogue/AIConversant.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets/Asset Packs/Not For Student Use - licence required/Synty Asset Packs - Commercial licence required/PolygonVikings/Prefabs" />
      <Folder Include="Assets/Asset Packs/Universal Gold Icons Sample" />
