@@ -11,12 +11,14 @@ namespace Dialogue
     {
         private Dialogue _currentDialogue;
         private DialogueNode _currentNode = null;
+        private AIConversant _currentConversant = null;
         private bool _isChoosing = false;
 
         public event Action onConversationUpdated;
         
-        public void StartDialogue(Dialogue newDialogue)
+        public void StartDialogue(AIConversant newConversant, Dialogue newDialogue)
         {
+            _currentConversant = newConversant;
             _currentDialogue = newDialogue;
             _currentNode = _currentDialogue.GetRootNode();
             TriggerEnterAction();
@@ -29,6 +31,7 @@ namespace Dialogue
             TriggerExitAction();
             _currentNode = null;
             _isChoosing = false;
+            _currentConversant = null;
             onConversationUpdated();
         }
 
@@ -91,17 +94,26 @@ namespace Dialogue
 
         private void TriggerEnterAction()
         {
-            if (_currentNode != null && _currentNode.GetOnEnterAction() != "")
+            if (_currentNode != null)
             {
-                Debug.Log(_currentNode.GetOnEnterAction());
+                TriggerAction(_currentNode.GetOnEnterAction());
             }
         }
 
         private void TriggerExitAction()
         {
-            if (_currentNode != null && _currentNode.GetOnExitAction() != "")
+            if (_currentNode != null )
             {
-                Debug.Log(_currentNode.GetOnExitAction());
+                TriggerAction(_currentNode.GetOnExitAction());
+            }
+        }
+
+        private void TriggerAction(string action)
+        {
+            if (action == "") return;
+            foreach (DialogueTrigger trigger in _currentConversant.GetComponents<DialogueTrigger>())
+            {
+                trigger.Trigger(action);
             }
         }
     }
