@@ -16,6 +16,9 @@ namespace Dialogue
         [SerializeField] 
         private Rect rect = new Rect(0,0,200,100);
 
+        [SerializeField] private string onEnterAction;
+        [SerializeField] private string onExitAction;
+
         public Rect GetRect()
         {
             return rect;
@@ -35,6 +38,17 @@ namespace Dialogue
         {
             return isPlayerSpeaking;
         }
+
+        public string GetOnEnterAction()
+        {
+            return onEnterAction;
+        }
+        
+        public string GetOnExitAction()
+        {
+            return onExitAction;
+        }
+
 
 #if UNITY_EDITOR
         public void SetPosition(Vector2 newPosition)

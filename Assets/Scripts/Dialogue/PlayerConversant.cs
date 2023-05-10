@@ -19,12 +19,14 @@ namespace Dialogue
         {
             _currentDialogue = newDialogue;
             _currentNode = _currentDialogue.GetRootNode();
+            TriggerEnterAction();
             onConversationUpdated();
         }
 
         public void Quit()
         {
             _currentDialogue = null;
+            TriggerExitAction();
             _currentNode = null;
             _isChoosing = false;
             onConversationUpdated();
@@ -58,6 +60,7 @@ namespace Dialogue
         public void SelectChoice(DialogueNode choseNode)
         {
             _currentNode = choseNode;
+            TriggerEnterAction();
             _isChoosing = false;
             Next();
         }
@@ -68,19 +71,38 @@ namespace Dialogue
             if (numPlayerResponses > 0)
             {
                 _isChoosing = true;
+                TriggerExitAction();
                 onConversationUpdated();
                 return;
             }
             
             DialogueNode[] children = _currentDialogue.GetAIChildren(_currentNode).ToArray();
             int randomIndex = Random.Range(0, children.Length);
+            TriggerExitAction();
             _currentNode = children[randomIndex];
+            TriggerEnterAction();
             onConversationUpdated();
         }
 
         public bool HasNext()
         {
             return _currentDialogue.GetAllChildren(_currentNode).Count() > 0;
+        }
+
+        private void TriggerEnterAction()
+        {
+            if (_currentNode != null && _currentNode.GetOnEnterAction() != "")
+            {
+                Debug.Log(_currentNode.GetOnEnterAction());
+            }
+        }
+
+        private void TriggerExitAction()
+        {
+            if (_currentNode != null && _currentNode.GetOnExitAction() != "")
+            {
+                Debug.Log(_currentNode.GetOnExitAction());
+            }
         }
     }
 }
